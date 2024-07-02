@@ -57,9 +57,12 @@ nav ul {
   justify-content: space-evenly;
   list-style: none;
   background-color: var(--black);
-  color: var(--white);
   padding: 20px;
   font-size: 1.2rem;
+}
+
+nav a {
+  color: var(--white);
 }
 
 header {
