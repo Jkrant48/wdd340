@@ -134,7 +134,31 @@ header {
 main {
   display: grid;
   grid-template-columns: 1fr;
+  text-align: center;
 }
+
+/*Vehicles display*/
+#inv-display {
+  margin: 0 auto;
+}
+
+.namePrice h2 {
+  font-size: 1rem;
+}
+
+#inv-display li {
+  /* Add a fixed width and height to ensure all boxes are the same size */
+  width: 19rem; /* Adjust the width as needed */
+  height: 17rem;/* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px; /* Add some margin for spacing*/ 
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  }
 
 .reviews ul{
   display: flex;
@@ -169,4 +193,15 @@ main {
   width: 100%;
   margin: 0;
   text-align: center;
+}
+
+/*******single view*******/
+#singleViewImage img{
+  width: 100%;
+  margin-top: 10px;
+}
+
+#singleView {
+  padding: 20px;
+  margin: 10px;
 }

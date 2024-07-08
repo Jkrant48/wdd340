@@ -25,12 +25,14 @@ app.set("layout", "./layouts/layout") // not at views root
  * Routes
  *************************/
 app.use(static)
+
+//inventory
 app.use("/inv", inventoryRoute)
 
+//intentional error route
+app.use("/serverError", inventoryRoute);
+
 //Index route
-/*app.get("/", function(req, res){
-  res.render("index", {title:"Home"})
-})*/
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 //File Not Found Route - must be last route in the list

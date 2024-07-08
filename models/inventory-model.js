@@ -26,4 +26,20 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+/*********************************
+ * Function to get a specific vehicle
+ **************************/
+async function getInventoryItem(vehicleId) {
+  try{
+    // Performing a database query to retrieve inventory data for a specific vehicle ID
+    const query = `SELECT * FROM public.inventory WHERE inv_id = $1`;
+    const data = await pool.query(query, [vehicleId]);
+    // Returning the resulting rows from the query
+    return data.rows;
+  } catch (error) {
+    // Error handling: logging the error to the console
+    console.error("getInventory error " + error);
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryItem};

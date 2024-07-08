@@ -79,4 +79,51 @@
       width: 100%;
       margin: 0;
     }
+
+    /**inventory display code below**/
+
+    #inv-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+      
+    .namePrice h2 {
+      font-size: 1rem;
+    }
+
+    #inv-display li {
+      /* Add a fixed width and height to ensure all boxes are the same size */
+      width: 250px; /* Adjust the width as needed */
+      height: 300px; /* Adjust the height as needed */
+      
+      }
+      
+    #inv-display img {
+      /* Add a max-width and max-height to ensure images don't exceed the box size */
+      max-width: 100%;
+      max-height: 150px; /*Adjust the height as needed */
+    }
+      
+    .namePrice {
+      /* Add some padding to separate the text from the image */
+      text-align: center;
+    }
+    
+    /***single view***/
+    #singleView{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+    }
+
+    #singleViewImage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #singleViewInfo {
+      text-align: left;
+    }
   }

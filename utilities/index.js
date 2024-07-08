@@ -59,6 +59,31 @@ Util.buildClassificationGrid = async function(data){
     return grid
   }
 
+  /**********************************************
+   * function to build single view of inventory
+   **********************************************/
+  Util.buildInventoryItemDetail = async (data) => {
+    let singleView;
+    singleView = "<div id='singleView'>";
+    data.forEach(vehicle => {
+    singleView += "<div id='singleViewImage'>";
+    singleView += '<img src="' + vehicle.inv_thumbnail + '" alt="Image of' + vehicle.inv_make + ' ' + vehicle.inv_model + ' on CSE Motors"/>';
+    singleView += "</div>";
+    // Add the vehicle details section
+    singleView += "<div id='singleViewInfo'>";
+    singleView += "<h3>" + vehicle.inv_make + ' ' + vehicle.inv_model + " Details </h3>";
+    singleView += "<p><strong>Price:</strong> " + ' $' + Intl.NumberFormat('en-US').format(vehicle.inv_price) + "</p>";
+    singleView += "<p><strong>Description:</strong> " + ' ' + vehicle.inv_description + "</p>";
+    singleView += "<p><strong>Color:</strong> " + ' ' + vehicle.inv_color + "</p>";
+    singleView += "<p><strong>Miles:</strong> " + ' ' + Intl.NumberFormat('en-US').format(vehicle.inv_miles) + "</p>";
+    singleView += "</div>";
+    });
+    // Close the single view container
+    singleView += "</div>";
+    // Return the built single view HTML
+    return singleView;
+  }
+  
 /******************************************** 
  * Middleware for handling errors
  * Wrap other function in this for

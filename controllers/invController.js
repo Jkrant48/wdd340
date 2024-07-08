@@ -20,4 +20,29 @@ invCont.buildByClassificationId = async function (req, res, next) {
     })
 }
 
+/******************************
+ * get inventory detail for a vehicle
+ *******************************/
+
+invCont.buildInventoryItemDetail = async (req, res, next) => {
+    const vehicleId = req.params.singleViewId;
+    const data = await invModel.getInventoryItem(vehicleId);
+    console.log(data);
+    const singleView = await utilities.buildInventoryItemDetail(data);
+    
+    let nav = await utilities.getNav()
+    const className = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`;
+    res.render('inventory/singleView', {
+        title: className,
+        nav,
+        singleView,
+        inv_id: vehicleId
+    })
+}
+
+invCont.serverError = async (req, res, next) => {
+    const error = new Error("Geat!");
+    next(error);
+}
+
 module.exports = invCont
