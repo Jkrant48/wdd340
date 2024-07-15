@@ -1,0 +1,18 @@
+<% if (title) {%>
+    <h1><%= title %></h1>
+<% } else{ 
+    res.redirect("/")
+}%>
+
+<%- messages() %> <!---Flash message-->
+
+<form action="/account/register" method="post" id="registerForm"> <!-- Registration form starts -->
+    <label class="nInfo">First Name:<input type="text" name="account_firstname" id="accountFirstname"></label> <!-- First name input field -->
+    <label class="nInfo">Last Name:<input type="text" name="account_lastname" id="account_lastname"></label> <!-- Last name input field -->
+
+    <label class="nInfo">Email:<input type="email" name="account_email" id="account_email"></label> <!-- Email input field -->
+    <label class="nInfo">Password:<input type="password" name="account_password" id="account_password"></label> <!-- Password input field-->
+    
+    <input type="submit" id="registerBtn" value="Register"> <!-- Submit button for registration -->
+    <p>I already have an Account! <a href="/account/login">Sign-in</a></p> <!-- Link to login page -->
+</form> <!-- Registration form ends -->

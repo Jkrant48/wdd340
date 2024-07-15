@@ -1,0 +1,15 @@
+<% if (title) {%>
+    <h1><%= title %></h1>
+<% } else{ 
+    res.redirect("/")
+}%>
+
+<%- messages() %> <!---Flash message-->
+
+<form id="loginForm" action="/account/login" method="post">
+    <label class="nInfo" for="email">Email*<input type="email" id="account_email" name="account_email"></label>
+    <label class="nInfo" for="password">Password*<input type="password" id="account_password" name="account_password"></label>
+    <input type="submit" id="submitBtn" value="Login">
+    <p>Don't have an account? <a href="/account/register">Register</a></p>
+</form>
+
