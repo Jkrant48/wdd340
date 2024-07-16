@@ -6,12 +6,21 @@
 
 <%- messages() %> <!---Flash message-->
 
-<form action="/account/register" method="post" id="registerForm"> <!-- Registration form starts -->
-    <label class="nInfo">First Name:<input type="text" name="account_firstname" id="accountFirstname"></label> <!-- First name input field -->
-    <label class="nInfo">Last Name:<input type="text" name="account_lastname" id="account_lastname"></label> <!-- Last name input field -->
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
 
-    <label class="nInfo">Email:<input type="email" name="account_email" id="account_email"></label> <!-- Email input field -->
-    <label class="nInfo">Password:<input type="password" name="account_password" id="account_password"></label> <!-- Password input field-->
+<form action="/account/register" method="post" id="registerForm"> <!-- Registration form starts -->
+    <label class="nInfo">First Name:<input type="text" name="account_firstname" id="accountFirstname" required></label> <!-- First name input field -->
+    <label class="nInfo">Last Name:<input type="text" name="account_lastname" id="account_lastname" required></label> <!-- Last name input field -->
+
+    <label class="nInfo">Email:<input type="email" name="account_email" id="account_email" required></label> <!-- Email input field -->
+    <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
+    <label class="nInfo">Password:<input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required></label> <!-- Password input field-->
     
     <input type="submit" id="registerBtn" value="Register"> <!-- Submit button for registration -->
     <p>I already have an Account! <a href="/account/login">Sign-in</a></p> <!-- Link to login page -->
