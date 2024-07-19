@@ -207,7 +207,7 @@ main {
 }
 
 /*******Login Form**********/
-#loginForm, #registerForm {
+#loginForm, #registerForm, #newClassificationForm {
   border: 2px solid #000000;
   background-color: #0c354b;
   padding: 2rem;
@@ -240,4 +240,13 @@ main {
 #loginForm a, #registerForm a{
   color: var(--white);
   text-decoration: underline;
+}
+
+/**Management view**/
+#managementLinks a {
+  display: block;
+  text-decoration: underline;
+  color: #0c354b;
+  font-size: 1.2rem;
+  margin-top: 10px;
 }

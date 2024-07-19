@@ -3,6 +3,57 @@ const utilities = require("../utilities/")
 
 const invCont = {}
 
+
+/*************************************
+ * Build inventory management view
+ ***********************************/
+invCont.buildManagementView = async function(req, res, next) {
+    let nav = await utilities.getNav();
+    const links = await utilities.getManagementLinks();
+    //const classificationSelect = await utilities.buildClassificationList();
+
+    res.render("./inventory/management", {
+        title: "Vehicle Management",
+        nav,
+        links,
+        error: null,
+        //classificationSelect,
+    });
+}
+
+/********************************
+ * Build add classification view
+ ********************************/
+//classification view function
+invCont.buildAddClassificationView = async function (req, res, next) {
+    let nav = await utilities.getNav();
+    res.render("./inventory/add-classification", {
+        title: "Add New Classification",
+        nav,
+        errors: null,
+        value:null,
+    })
+}
+
+//function to add new classificaition
+invCont.addClassification = async function (req, res) {
+    let nav = await utilities.getNav();
+    const {classificationName} = req.body;
+    const newClassification = await invModel.addClassification(classificationName);
+
+    if (newClassification) {
+        req.flash("notice", `${classificationName} has been added as a new classification.`);
+        res.redirect("./");
+    } else {
+        req.flash("notice", "Classification not added, try again.");
+        res.status(501).render("inventory/add-classification",{
+            title: "Add New Classification",
+            nav,
+        });
+    }
+}
+
+
 /* ***********************************
 * Build inventory by classification view
 * *********************************** */

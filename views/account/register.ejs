@@ -15,10 +15,10 @@
   <% } %>
 
 <form action="/account/register" method="post" id="registerForm"> <!-- Registration form starts -->
-    <label class="nInfo">First Name:<input type="text" name="account_firstname" id="accountFirstname" required></label> <!-- First name input field -->
-    <label class="nInfo">Last Name:<input type="text" name="account_lastname" id="account_lastname" required></label> <!-- Last name input field -->
+    <label class="nInfo">First Name:<input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>"></label> <!-- First name input field -->
+    <label class="nInfo">Last Name:<input type="text" name="account_lastname" id="account_lastname" required value="<%= locals.account_lastname %>"></label> <!-- Last name input field -->
 
-    <label class="nInfo">Email:<input type="email" name="account_email" id="account_email" required></label> <!-- Email input field -->
+    <label class="nInfo">Email:<input type="email" name="account_email" id="account_email" required value="<%= locals.account_email %>"></label> <!-- Email input field -->
     <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
     <label class="nInfo">Password:<input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required></label> <!-- Password input field-->
     

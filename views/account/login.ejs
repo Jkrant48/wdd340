@@ -6,8 +6,16 @@
 
 <%- messages() %> <!---Flash message-->
 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
 <form id="loginForm" action="/account/login" method="post">
-    <label class="nInfo" for="email">Email*<input type="email" id="account_email" name="account_email" required></label>
+    <label class="nInfo" for="email">Email*<input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>"></label>
     <label class="nInfo" for="password">Password*<input type="password" id="account_password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required ></label>
     <input type="submit" id="submitBtn" value="Login">
     <p>Don't have an account? <a href="/account/register">Register</a></p>

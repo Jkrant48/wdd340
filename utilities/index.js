@@ -25,6 +25,17 @@ Util.getNav = async function (req, res, next) {
     return list
 }
 
+/**************************
+ * get management links
+ **************************/
+Util.getManagementLinks = async function(req, res, next) {
+  return links = `<div id="managementLinks" >
+      <a href="/inv/add-classification"> Add New Classification </a>
+      <a href="/inv/add-inventory"> Add New Vehicle </a>
+    </div>`;
+}
+
+
 
 /* **************************************
 * Build the classification view HTML
